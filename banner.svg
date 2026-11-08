@@ -1,0 +1,367 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" width="100%" height="100%">
+  <defs>
+    <style>
+      /* Live Animations (CSS + SMIL) - Works natively inside GitHub READMEs */
+      @keyframes packetFlow {
+        to { stroke-dashoffset: -28; }
+      }
+      @keyframes radarSpin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes critPulse {
+        0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px #ef4444); }
+        50% { opacity: 0.45; filter: drop-shadow(0 0 1px #ef4444); }
+      }
+      @keyframes cursorBlink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+      @keyframes scanlineMove {
+        0% { transform: translateY(0px); opacity: 0.0; }
+        15% { opacity: 0.35; }
+        85% { opacity: 0.35; }
+        100% { transform: translateY(310px); opacity: 0.0; }
+      }
+      @keyframes badgeGlow {
+        0%, 100% { stroke: #38bdf8; }
+        50% { stroke: #00f2fe; }
+      }
+
+      .edge-flow-red {
+        stroke-dasharray: 8 6;
+        animation: packetFlow 0.95s linear infinite;
+      }
+      .edge-flow-amber {
+        stroke-dasharray: 7 7;
+        animation: packetFlow 1.3s linear infinite;
+      }
+      .radar-sweep {
+        transform-origin: 36px 39px;
+        animation: radarSpin 4s linear infinite;
+      }
+      .pulse-crit {
+        animation: critPulse 1.8s ease-in-out infinite;
+      }
+      .cursor-blink {
+        animation: cursorBlink 1s step-end infinite;
+      }
+      .hud-scanline {
+        animation: scanlineMove 4.5s ease-in-out infinite;
+      }
+      .author-pill {
+        animation: badgeGlow 3s ease-in-out infinite;
+      }
+    </style>
+
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811" />
+      <stop offset="50%" stop-color="#0a0f1e" />
+      <stop offset="100%" stop-color="#060913" />
+    </linearGradient>
+
+    <!-- Cyan Accent Gradient -->
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <!-- Radar Sweep Cone Gradient -->
+    <linearGradient id="radarCone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.0" />
+    </linearGradient>
+
+    <!-- HUD Scanline Gradient -->
+    <linearGradient id="scanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1e293b" stroke-width="0.7" stroke-opacity="0.5" />
+    </pattern>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#ef4444" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#f59e0b" />
+    </marker>
+  </defs>
+
+  <!-- 1. Outer Background & Cyber Grid -->
+  <rect width="1200" height="440" rx="14" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="2" />
+  <rect width="1200" height="440" rx="14" fill="url(#grid)" />
+
+  <!-- Top Telemetry Header Bar -->
+  <line x1="40" y1="28" x2="1160" y2="28" stroke="#1e293b" stroke-width="1" />
+  <rect x="40" y="27" width="160" height="2" fill="url(#cyanGrad)" />
+  <text x="40" y="20" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" letter-spacing="1.8">
+    SYS::NHI_POSTURE_ENGINE // OWASP_NHI_TOP_10_2025 // ZERO_LLM_VERDICT
+  </text>
+
+  <!-- Live Status Indicator -->
+  <circle cx="964" cy="16" r="4" fill="#10b981" class="pulse-crit" />
+  <text x="1160" y="20" text-anchor="end" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, monospace" font-size="10.5" font-weight="700" letter-spacing="1.2">
+    LIVE TELEMETRY // AUTHOR: @Ni7H1N
+  </text>
+
+  <!-- ================================================================= -->
+  <!-- 2. LEFT PANEL: Animated Radar Shield, Brand, CLI, @Ni7H1N Badge   -->
+  <!-- ================================================================= -->
+  <g transform="translate(48, 56)">
+    <!-- Animated Hexagonal Radar Shield -->
+    <g transform="translate(0, 6)">
+      <polygon points="36,0 72,18 72,58 36,78 0,58 0,18" fill="#0b1528" stroke="#38bdf8" stroke-width="2" />
+      <circle cx="36" cy="39" r="24" fill="none" stroke="#1e293b" stroke-width="1" />
+      <circle cx="36" cy="39" r="14" fill="none" stroke="#1e293b" stroke-width="1" stroke-dasharray="2 2" />
+
+      <!-- Rotating Radar Sweep Cone -->
+      <g class="radar-sweep">
+        <path d="M 36 39 L 36 15 A 24 24 0 0 1 60 39 Z" fill="url(#radarCone)" />
+        <line x1="36" y1="39" x2="36" y2="15" stroke="#00f2fe" stroke-width="1.8" />
+      </g>
+
+      <!-- Shield Core Nodes -->
+      <circle cx="36" cy="39" r="3.5" fill="#00f2fe" />
+      <circle cx="48" cy="28" r="3" fill="#ef4444" class="pulse-crit" />
+      <circle cx="24" cy="48" r="2.5" fill="#10b981" />
+    </g>
+
+    <!-- Title & Version Pill -->
+    <text x="88" y="48" fill="#f8fafc" font-family="system-ui, -apple-system, &#39;Segoe UI&#39;, Roboto, Helvetica, sans-serif" font-size="46" font-weight="800" letter-spacing="-1">
+      Agent<tspan fill="url(#cyanGrad)">Guard</tspan>
+    </text>
+    <rect x="358" y="20" width="54" height="24" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="385" y="36" text-anchor="middle" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, monospace" font-size="12" font-weight="700">
+      v0.3
+    </text>
+
+    <!-- Author / GitHub Profile Badge (@Ni7H1N) -->
+    <g transform="translate(422, 20)">
+      <rect x="0" y="0" width="112" height="24" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" class="author-pill" />
+      <circle cx="14" cy="12" r="4" fill="#00f2fe" />
+      <text x="24" y="16" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11.5" font-weight="700">
+        @Ni7H1N
+      </text>
+    </g>
+
+    <!-- Subtitle -->
+    <text x="90" y="74" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, monospace" font-size="13.5" font-weight="600">
+      The nmap for AI Agents, MCP Servers & Non-Human Identities
+    </text>
+
+    <!-- Value Proposition -->
+    <text x="0" y="114" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="14">
+      Zero-inventory discovery, in-memory blast-radius graph, and deterministic
+    </text>
+    <text x="0" y="134" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="14">
+      risk tiering mapped to the <tspan fill="#38bdf8" font-weight="600">OWASP Non-Human Identities Top 10 (2025)</tspan>.
+    </text>
+
+    <!-- Live Terminal Window with Blinking Cursor -->
+    <rect x="0" y="154" width="534" height="76" rx="8" fill="#04070e" stroke="#1e293b" stroke-width="1.5" />
+    <circle cx="16" cy="168" r="4" fill="#ef4444" />
+    <circle cx="30" cy="168" r="4" fill="#f59e0b" />
+    <circle cx="44" cy="168" r="4" fill="#10b981" />
+    <text x="62" y="172" fill="#64748b" font-family="ui-monospace, SFMono-Regular, monospace" font-size="10">
+      ni7h1n@secops:~/AgentGuard — zsh
+    </text>
+    <text x="16" y="196" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, monospace" font-size="12">
+      <tspan fill="#10b981" font-weight="700">❯</tspan> python3 agentguard.py <tspan fill="#38bdf8">--repo</tspan> . <tspan fill="#38bdf8">--cloud</tspan> aws <tspan fill="#38bdf8">--runtime</tspan> <tspan fill="#f43f5e">--sarif</tspan>
+    </text>
+    <text x="16" y="216" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11.5">
+      <tspan fill="#10b981">✔</tspan> Evaluated: <tspan fill="#f8fafc" font-weight="700">9</tspan> identities | <tspan fill="#ef4444" font-weight="700">✖ Tier 1 Critical: 4</tspan> | SARIF Ready
+    </text>
+    <!-- Blinking Terminal Cursor -->
+    <rect x="468" y="205" width="7" height="13" fill="#38bdf8" class="cursor-blink" />
+
+    <!-- Capability Pills -->
+    <g transform="translate(0, 246)" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="600">
+      <rect x="0" y="0" width="122" height="28" rx="6" fill="#0f172a" stroke="#334155" />
+      <text x="61" y="18" text-anchor="middle" fill="#38bdf8">AST & Secrets</text>
+
+      <rect x="134" y="0" width="126" height="28" rx="6" fill="#0f172a" stroke="#ef4444" stroke-opacity="0.8" />
+      <text x="197" y="18" text-anchor="middle" fill="#f87171">Ghost PIDs</text>
+
+      <rect x="272" y="0" width="126" height="28" rx="6" fill="#0f172a" stroke="#334155" />
+      <text x="335" y="18" text-anchor="middle" fill="#a855f7">MCP SSE Probe</text>
+
+      <rect x="410" y="0" width="124" height="28" rx="6" fill="#0f172a" stroke="#334155" />
+      <text x="472" y="18" text-anchor="middle" fill="#10b981">SARIF & Graph</text>
+    </g>
+
+    <!-- Bottom Stack Info -->
+    <g transform="translate(0, 294)" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11">
+      <text x="0" y="14" fill="#64748b">STACK:</text>
+      <text x="52" y="14" fill="#e2e8f0">LangChain • CrewAI • AutoGen • PydanticAI • AWS/Entra/GCP • K8s • GitHub CI</text>
+    </g>
+  </g>
+
+  <!-- Vertical Divider -->
+  <line x1="604" y1="46" x2="604" y2="392" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="4 4" />
+
+  <!-- ================================================================= -->
+  <!-- 3. RIGHT PANEL: Animated Live IdentityGraph Topology HUD          -->
+  <!-- ================================================================= -->
+  <g transform="translate(625, 48)">
+    <!-- HUD Container -->
+    <rect x="0" y="0" width="535" height="344" rx="10" fill="#070b14" fill-opacity="0.9" stroke="#1e293b" stroke-width="1.5" />
+    <rect x="0" y="0" width="535" height="32" rx="10" fill="#0f172a" />
+    <text x="16" y="20" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">
+      LIVE_IDENTITY_GRAPH // BLAST_RADIUS_TOPOLOGY
+    </text>
+
+    <!-- Pulsing Critical Badge in HUD Header -->
+    <circle cx="388" cy="16" r="4.5" fill="#ef4444" class="pulse-crit" />
+    <text x="519" y="20" text-anchor="end" fill="#f87171" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">
+      TIER 1 CRITICAL: 4
+    </text>
+
+    <!-- Animated Horizontal Scanner Beam across HUD -->
+    <rect x="2" y="34" width="531" height="2" fill="url(#scanGrad)" class="hud-scanline" />
+
+    <!-- Animated Directed Graph Edges -->
+    <!-- Edge 1: Ghost Agent -> Hardcoded Secret -->
+    <path d="M 185 88 L 295 88" fill="none" stroke="#ef4444" stroke-width="2" class="edge-flow-red" marker-end="url(#arrowRed)" />
+    <rect x="206" y="74" width="68" height="15" rx="3" fill="#070b14" />
+    <text x="240" y="85" text-anchor="middle" fill="#f87171" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5">
+      has_secret
+    </text>
+
+    <!-- Edge 2: FinOps Crew -> Hardcoded Secret -->
+    <path d="M 185 168 L 295 102" fill="none" stroke="#ef4444" stroke-width="1.8" class="edge-flow-red" marker-end="url(#arrowRed)" />
+
+    <!-- Edge 3: FinOps Crew -> AWS Wildcard Role -->
+    <path d="M 185 180 L 295 180" fill="none" stroke="#ef4444" stroke-width="2" class="edge-flow-red" marker-end="url(#arrowRed)" />
+    <rect x="205" y="167" width="70" height="15" rx="3" fill="#070b14" />
+    <text x="240" y="178" text-anchor="middle" fill="#f87171" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5">
+      can_assume
+    </text>
+
+    <!-- Edge 4: FinOps Crew -> MCP Server Postgres -->
+    <path d="M 185 194 L 295 256" fill="none" stroke="#f59e0b" stroke-width="1.8" class="edge-flow-amber" marker-end="url(#arrowAmber)" />
+    <rect x="206" y="220" width="62" height="15" rx="3" fill="#070b14" />
+    <text x="237" y="231" text-anchor="middle" fill="#fbbf24" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5">
+      can_write
+    </text>
+
+    <!-- NODE 1: Ghost Runtime Agent (Tier 1 - Pulsing Alert) -->
+    <g transform="translate(20, 56)">
+      <rect x="0" y="0" width="165" height="58" rx="7" fill="#1f0913" stroke="#ef4444" stroke-width="2" stroke-dasharray="5 3" />
+      <rect x="8" y="8" width="54" height="15" rx="3" fill="#ef4444" class="pulse-crit" />
+      <text x="35" y="19" text-anchor="middle" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5" font-weight="700">
+        GHOST
+      </text>
+      <text x="68" y="19" fill="#fca5a5" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5" font-weight="700">
+        TIER 1 • NHI1
+      </text>
+      <text x="10" y="36" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">
+        Runtime_AutoGen
+      </text>
+      <text x="10" y="50" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5">
+        PID:31415 (0.0.0.0:8081)
+      </text>
+    </g>
+
+    <!-- NODE 2: FinOps Autonomous Crew (Tier 1) -->
+    <g transform="translate(20, 148)">
+      <rect x="0" y="0" width="165" height="58" rx="7" fill="#180b12" stroke="#ef4444" stroke-width="1.8" />
+      <text x="10" y="18" fill="#f87171" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5" font-weight="700">
+        AGENT • TIER 1 • NHI2
+      </text>
+      <text x="10" y="35" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">
+        FinOps_CrewAI
+      </text>
+      <text x="10" y="49" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5">
+        tools: [bash, sql_db]
+      </text>
+    </g>
+
+    <!-- NODE 3: Support Triage Classifier (Tier 4) -->
+    <g transform="translate(20, 238)">
+      <rect x="0" y="0" width="165" height="56" rx="7" fill="#071a17" stroke="#10b981" stroke-width="1.5" />
+      <text x="10" y="18" fill="#34d399" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5" font-weight="700">
+        AGENT • TIER 4 • SCOPED
+      </text>
+      <text x="10" y="35" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">
+        Support_PydanticAI
+      </text>
+      <text x="10" y="48" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5">
+        owner: support-eng@
+      </text>
+    </g>
+
+    <!-- NODE 4: Hardcoded Secret (Tier 1) -->
+    <g transform="translate(302, 56)">
+      <rect x="0" y="0" width="212" height="58" rx="7" fill="#180b12" stroke="#ef4444" stroke-width="1.8" />
+      <text x="10" y="18" fill="#f87171" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5" font-weight="700">
+        SECRET • TIER 1 • NHI2/NHI9
+      </text>
+      <text x="10" y="35" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">
+        OpenAI_API_Key (Reused)
+      </text>
+      <text x="10" y="49" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5">
+        sk-pro...[sha256:9f86d081]
+      </text>
+    </g>
+
+    <!-- NODE 5: AWS Wildcard IAM Role (Tier 1) -->
+    <g transform="translate(302, 148)">
+      <rect x="0" y="0" width="212" height="58" rx="7" fill="#180b12" stroke="#ef4444" stroke-width="1.8" />
+      <text x="10" y="18" fill="#f87171" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5" font-weight="700">
+        AWS_IAM • TIER 1 • NHI5
+      </text>
+      <text x="10" y="35" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">
+        BedrockExecutionRole
+      </text>
+      <text x="10" y="49" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5">
+        priv: wildcard (public trust)
+      </text>
+    </g>
+
+    <!-- NODE 6: Orphaned MCP Server (Tier 2) -->
+    <g transform="translate(302, 238)">
+      <rect x="0" y="0" width="212" height="56" rx="7" fill="#1c1409" stroke="#f59e0b" stroke-width="1.6" />
+      <text x="10" y="18" fill="#fbbf24" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5" font-weight="700">
+        MCP_SERVER • TIER 2 • NHI1
+      </text>
+      <text x="10" y="35" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">
+        MCP:postgres-prod
+      </text>
+      <text x="10" y="48" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9.5">
+        owner: bob@ [departed]
+      </text>
+    </g>
+
+    <!-- Legend Footer inside HUD -->
+    <line x1="12" y1="312" x2="523" y2="312" stroke="#1e293b" stroke-width="1" />
+    <g transform="translate(16, 329)" font-family="ui-monospace, SFMono-Regular, monospace" font-size="10">
+      <circle cx="5" cy="-3" r="4" fill="#ef4444" class="pulse-crit" />
+      <text x="14" y="0" fill="#cbd5e1">Tier 1 (Critical)</text>
+
+      <circle cx="135" cy="-3" r="4" fill="#f59e0b" />
+      <text x="144" y="0" fill="#cbd5e1">Tier 2 (High)</text>
+
+      <circle cx="245" cy="-3" r="4" fill="#eab308" />
+      <text x="254" y="0" fill="#cbd5e1">Tier 3 (Med)</text>
+
+      <circle cx="350" cy="-3" r="4" fill="#10b981" />
+      <text x="359" y="0" fill="#cbd5e1">Tier 4 (Scoped)</text>
+    </g>
+  </g>
+
+  <!-- Bottom Telemetry Footer -->
+  <line x1="40" y1="412" x2="1160" y2="412" stroke="#1e293b" stroke-width="1" />
+  <text x="40" y="428" fill="#64748b" font-family="ui-monospace, SFMono-Regular, monospace" font-size="10.5">
+    github.com/Ni7H1N/AgentGuard • DETERMINISTIC RULE ENGINE • ZERO TELEMETRY
+  </text>
+  <text x="1160" y="428" text-anchor="end" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, monospace" font-size="10.5" font-weight="600">
+    BUILT BY @Ni7H1N
+  </text>
+</svg>
