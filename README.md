@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="assets/banner.svg" alt="AgentGuard Architecture Banner" width="100%" />
+  <img src="banner.svg" alt="AgentGuard Architecture Banner" width="100%" />
 
   <br><br>
 
