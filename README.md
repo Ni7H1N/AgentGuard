@@ -212,14 +212,6 @@ AgentGuard is built around three principles:
 
 ---
 
-## 📄 License
-
-Distributed under the **MIT License**.
-
-See the [LICENSE](LICENSE) file for more information.
-
----
-
 <div align="center">
 
   **Built for the security of the autonomous AI era.**
