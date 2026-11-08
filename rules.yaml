@@ -1,0 +1,14 @@
+version: "0.3"
+thresholds:
+  rotation_max_age_days: 90
+  admin_min_aggravators: 2
+rules:
+  RULE_T1_GHOST_AGENT: { enabled: true, tier: "Tier 1", owasp: "NHI1", primary_risk_factor: "Untracked Ghost Agent", description: "Active agent with no matching manifest." }
+  RULE_T1_HARDCODED_SECRET: { enabled: true, tier: "Tier 1", owasp: "NHI2", primary_risk_factor: "Hardcoded Secret", description: "Plaintext secret embedded in source." }
+  RULE_T1_WILDCARD_EXPOSED: { enabled: true, tier: "Tier 1", owasp: "NHI5", primary_risk_factor: "Wildcard Privilege", description: "Wildcard with aggravators." }
+  RULE_T1_ADMIN_MULTI_AGGRAVATOR: { enabled: true, tier: "Tier 1", owasp: "NHI5", primary_risk_factor: "Admin Multi-Aggravator", description: "Admin with multiple aggravators." }
+  RULE_T2_ORPHANED_IDENTITY: { enabled: true, tier: "Tier 2", owasp: "NHI1", primary_risk_factor: "Orphaned Identity", description: "Missing or departed owner." }
+  RULE_T2_UNROTATED_LONG_LIVED_KEY: { enabled: true, tier: "Tier 2", owasp: "NHI7", primary_risk_factor: "Unrotated Key", description: "Credential older than threshold." }
+  RULE_T2_NHI_REUSE: { enabled: true, tier: "Tier 2", owasp: "NHI9", primary_risk_factor: "NHI Reuse", description: "Shared across workloads." }
+  RULE_T3_ELEVATED_OR_STATIC_AUTH: { enabled: true, tier: "Tier 3", owasp: "NHI4", primary_risk_factor: "Elevated Privilege", description: "Write access or static auth." }
+  RULE_T4_SCOPED_BASELINE: { enabled: true, tier: "Tier 4", owasp: "NHI6", primary_risk_factor: "Scoped Baseline", description: "Governed and scoped." }

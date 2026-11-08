@@ -1,0 +1,15 @@
+# @owner: devops-team@company.com
+name: AgentGuard Scan
+on: [push, pull_request]
+permissions: { contents: read, security-events: write, actions: read }
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -r requirements.txt pytest && pytest -v
+      - run: python3 agentguard.py --repo . --ci github --rules rules.yaml --sarif --graph-export mermaid --output ./agentguard-report
+      - uses: github/codeql-action/upload-sarif@v3
+        with: { sarif_file: ./agentguard-report.sarif }
